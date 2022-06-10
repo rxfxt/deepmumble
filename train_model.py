@@ -1,6 +1,3 @@
-#This model is a modified version from an assignemnt I did as part of the Tensorflow Developer Certification by deeplearning.ai  
-#You can find the specialization here https://www.coursera.org/professional-certificates/tensorflow-in-practice
-
 import tensorflow as tf
 import numpy as np 
 
@@ -9,20 +6,15 @@ from tensorflow.keras.layers import Embedding, LSTM, Dense, Bidirectional
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
+import matplotlib.pyplot as plt
 
-#os.environ["TF_GPU_ALLOCATOR"] = "cuda_malloc_async"
-
-#gpus = tf.config.experimental.list_physical_devices('GPU')
-#for gpu in gpus:
-#  tf.config.experimental.set_memory_growth(gpu, True)
-
-# Load the dataset
-data = open('./Lyrics/BellyLyrics.txt', encoding="utf8").read()
+# Load the lyrics file
+data = open('./Lyrics/BirdmanLyrics.txt', encoding="utf8").read()
 
 # Lowercase and split the text
 corpus = data.lower().split("\n")
 
-# Preview the result
+# Preview the lyrics
 print(corpus)
 
 # Initialize the Tokenizer class
@@ -125,12 +117,13 @@ model.compile(
 # Print the model summary
 model.summary()
 
-epochs = 100
+epochs = 500
 
 # Train the model
 history = model.fit(xs, ys, epochs=epochs)
 
-import matplotlib.pyplot as plt
+#Save model
+model.save('deepBellyModel')
 
 # Plot utility
 def plot_graphs(history, string):
@@ -141,36 +134,3 @@ def plot_graphs(history, string):
 
 # Visualize the accuracy
 plot_graphs(history, 'accuracy')
-
-# Define seed text
-seed_text = "Born alone, die alone"
-
-# Define total words to predict
-next_words = 500
-
-# Loop until desired length is reached
-for _ in range(next_words):
-
-	# Convert the seed text to a token sequence
-	token_list = tokenizer.texts_to_sequences([seed_text])[0]
-
-	# Pad the sequence
-	token_list = pad_sequences([token_list], maxlen=max_sequence_len-1, padding='pre')
-	
-	# Feed to the model and get the probabilities for each index
-	probabilities = model.predict(token_list)
-
-	# Get the index with the highest probability
-	predicted = np.argmax(probabilities, axis=-1)[0]
-
-	# Ignore if index is 0 because that is just the padding.
-	if predicted != 0:
-		
-		# Look up the word associated with the index. 
-		output_word = tokenizer.index_word[predicted]
-
-		# Combine with the seed text
-		seed_text += " " + output_word
-
-# Print the result	
-print(seed_text)
