@@ -32,7 +32,7 @@ lyrics_list = [song.lyrics for song in songs]
 
 #If user requested to write lyrics to file, write the lyrics and seperate them using the seperator below. Else, print the song lyrics for each song
 if write_input == "y":
-    file.write("\n \n   ****************   \n \n".join(lyrics_list))      
+    file.write("\n \n".join(lyrics_list))      
 else:
     for song in lyrics_list:
         print(song)
