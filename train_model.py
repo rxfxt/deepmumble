@@ -1,5 +1,6 @@
 import tensorflow as tf
-import numpy as np 
+import numpy as np
+import os  
 
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.layers import Embedding, LSTM, Dense, Bidirectional
@@ -9,7 +10,7 @@ from tensorflow.keras.optimizers import Adam
 import matplotlib.pyplot as plt
 
 # Load the lyrics file
-data = open('./Lyrics/BirdmanLyrics.txt', encoding="utf8").read()
+data = open('./Lyrics/BellyLyricsNoSeperator_cleaned.txt', encoding="utf8").read()
 
 # Lowercase and split the text
 corpus = data.lower().split("\n")
@@ -118,12 +119,27 @@ model.compile(
 model.summary()
 
 epochs = 500
+batch_size = 64
+
+# Create checkpoints that save every epoch
+# Include epoch in the filename 
+checkpoint_path = "checkpoints/cp-{epoch:04d}.ckpt"
+checkpoint_dir = os.path.dirname(checkpoint_path)
+
+cp_callback = tf.keras.callbacks.ModelCheckpoint(
+  filepath = checkpoint_path,
+  verbose = 1,
+  save_weights_only = True,
+  save_freq = 'epoch')
+
+# Save the weights using the 'checkpoint_path' format
+model.save_weights(checkpoint_path.format(epoch = 0))
 
 # Train the model
-history = model.fit(xs, ys, epochs=epochs)
+history = model.fit(xs, ys, epochs=epochs, batch_size = batch_size, callbacks=[cp_callback], verbose=0)
 
 #Save model
-model.save('deepBellyModel')
+model.save('deepBellyModelv2')
 
 # Plot utility
 def plot_graphs(history, string):
