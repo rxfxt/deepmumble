@@ -9,8 +9,10 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 import matplotlib.pyplot as plt
 
+lyrics_file = input('Please enter the lyrics filename: ')
+
 # Load the lyrics file
-data = open('./Lyrics/BellyLyricsNoSeperator_cleaned.txt', encoding="utf8").read()
+data = open(f'./Lyrics/{lyrics_file}.txt', encoding="utf8").read()
 
 # Lowercase and split the text
 corpus = data.lower().split("\n")
@@ -96,6 +98,9 @@ print(f'decoded to text: {tokenizer.sequences_to_texts([xs[elem_number]])}')
 print(f'one-hot label: {ys[elem_number]}')
 print(f'index of label: {np.argmax(ys[elem_number])}')
 
+# Number of training examples 
+print(f'Number of training examples: {len(xs)}')
+
 # Hyperparameters
 embedding_dim = 100
 lstm_units = 150
@@ -118,28 +123,30 @@ model.compile(
 # Print the model summary
 model.summary()
 
-epochs = 500
-batch_size = 64
+epochs = 100
+batch_size = 128
 
-# Create checkpoints that save every epoch
+# Create checkpoints that save every 10 epochs
 # Include epoch in the filename 
-checkpoint_path = "checkpoints/cp-{epoch:04d}.ckpt"
+checkpoint_path = "Checkpoints/cp-{epoch:04d}.ckpt"
 checkpoint_dir = os.path.dirname(checkpoint_path)
 
 cp_callback = tf.keras.callbacks.ModelCheckpoint(
   filepath = checkpoint_path,
   verbose = 1,
   save_weights_only = True,
-  save_freq = 'epoch')
+  save_freq = 10*round(len(xs)/batch_size))
 
 # Save the weights using the 'checkpoint_path' format
 model.save_weights(checkpoint_path.format(epoch = 0))
 
+model_name = input('Please specify a name for the model: ')
+
 # Train the model
-history = model.fit(xs, ys, epochs=epochs, batch_size = batch_size, callbacks=[cp_callback], verbose=0)
+history = model.fit(xs, ys, epochs=epochs, batch_size = batch_size, callbacks=[cp_callback], verbose=1)
 
 #Save model
-model.save('deepBellyModelv2')
+model.save(f'Models/{model_name}')
 
 # Plot utility
 def plot_graphs(history, string):
