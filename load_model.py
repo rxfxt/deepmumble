@@ -7,8 +7,10 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 
+lyrics_file = input('Please enter the name of the lyrics file: ')
+
 # Load the dataset
-data = open('./Lyrics/BellyLyrics.txt', encoding="utf8").read()
+data = open(f'./Lyrics/{lyrics_file}.txt', encoding="utf8").read()
 
 # Lowercase and split the text
 corpus = data.lower().split("\n")
@@ -49,7 +51,9 @@ for line in corpus:
 # Get the length of the longest line
 max_sequence_len = max([len(x) for x in input_sequences])
 
-model = tf.keras.models.load_model('deepBellyModel')
+model_name = input('Please enter the name of the model you wish to load: ')
+
+model = tf.keras.models.load_model(model_name)
 
 model.summary()
 
