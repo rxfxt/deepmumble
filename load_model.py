@@ -18,10 +18,8 @@ corpus = data.lower().split("\n")
 # Preview the result
 print(corpus)
 
-# Initialize the Tokenizer class
+# Initialize the Tokenizer class and generate the word index dictionary
 tokenizer = Tokenizer()
-
-# Generate the word index dictionary
 tokenizer.fit_on_texts(corpus)
 
 # Define the total words. You add 1 for the index `0` which is just the padding token.
@@ -58,7 +56,7 @@ model = tf.keras.models.load_model(model_name)
 model.summary()
 
 # Define seed text
-seed_text = "I'm dressed in black just like mi gente"
+seed_text = input('Please enter a seed phrase to start lyrics generation from: ')
 
 # Define total words to predict
 next_words = 500
