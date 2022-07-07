@@ -1,4 +1,5 @@
 from lyricsgenius import Genius
+import config
 
 # Function to initialize lyrics file 
 def write_lyrics(file_name):
@@ -11,7 +12,7 @@ def write_lyrics(file_name):
             file_name = input("Specify filename to write lyrics: ")
 
 # Set API key and setup parameters for Genius Search
-api_key = "***REMOVED***"
+api_key = config.api_key
 genius = Genius(api_key, skip_non_songs=True, excluded_terms=["(Remix)"], remove_section_headers=True)
 
 # Prompt user on which artist, number of songs they want to grab lyrics
