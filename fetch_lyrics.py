@@ -1,12 +1,26 @@
 from lyricsgenius import Genius
 
+# Function to initialize lyrics file 
+def write_lyrics(file_name):
+    while True:
+        try:
+            file = open(f"./Lyrics/{file_name}.txt", "x", encoding="utf-8")
+            return file, file_name
+        except:
+            print("Could not save to the requested file name, please try again...")
+            file_name = input("Specify filename to write lyrics: ")
+
 # Set API key and setup parameters for Genius Search
 api_key = "***REMOVED***"
 genius = Genius(api_key, skip_non_songs=True, excluded_terms=["(Remix)"], remove_section_headers=True)
 
-# Prompt user on which artist and number of songs they want to grab lyrics for
+# Prompt user on which artist, number of songs they want to grab lyrics
 artist_input = input("Enter artist name to retreive song lyrics: ")
 all_music = input("Do you want to pull all the aritsts lyrics (y/n): ")
+file_name = input("Specify filename to write lyrics: ")
+
+# Initialize lyrics file
+file, file_name = write_lyrics(file_name)
 
 # Fetch song lyrics using Genius API and assign them to the variable songs 
 if all_music == "y":
@@ -18,20 +32,11 @@ elif all_music == "n":
 
 songs = artist.songs
 
-# Prompt user to set filename to write the requested lyrics to file
-file_name = input("Specify filename: ")
-try:
-    file = open(f"./Lyrics/{file_name}.txt", "x", encoding="utf-8")
-except:
-    print(f"Could not save the following file: {file_name}.txt")
-else:
-    pass
-
 # Create list of song lyrics    
 lyrics_list = [song.lyrics for song in songs]
 num_songs = len(lyrics_list)
 
-# If user requested to write lyrics to file, write the lyrics and seperate them using the seperator below. Else, print the song lyrics for each song
+# Write lyrics to file, write the lyrics and seperate them using the seperator below
 file.write("\n \n".join(lyrics_list))      
 
 # Print summary of the lyrics fetched and filename
@@ -39,4 +44,3 @@ if all_music == "y":
     print(f"All song lyrics ({num_songs} songs) for {artist_input} have been written to {file_name}.txt") 
 elif all_music == "n":
     print(f"{num_songs} song lyrics for {artist_input} have been written to {file_name}.txt") 
-
