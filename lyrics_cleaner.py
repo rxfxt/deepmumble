@@ -13,7 +13,7 @@ except:
 file_cleaned = open(f"./Lyrics/{file_name}_cleaned.txt", "x", encoding="utf-8")
 
 for line in file:
-    # Remove line that contains song title 
+    # Remove line that contains song title
     if 'Lyrics' in line:
         line = ''
 

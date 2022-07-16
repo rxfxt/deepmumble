@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import matplotlib.pyplot as plt
 import os  
 
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -7,7 +8,6 @@ from tensorflow.keras.layers import Embedding, LSTM, Dense, Bidirectional
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
-import matplotlib.pyplot as plt
 
 lyrics_file = input('Please enter the lyrics filename: ')
 
@@ -103,7 +103,7 @@ print(f'Number of training examples: {len(xs)}')
 
 # Hyperparameters
 embedding_dim = 100
-lstm_units = 150
+lstm_units = 300
 learning_rate = 0.01
 
 # Build the model
@@ -137,13 +137,16 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(
   save_weights_only = True,
   save_freq = 10*round(len(xs)/batch_size))
 
+# Create callback that stops training if loss does not improve after 5 epochs
+loss_callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=5) 
+
 # Save the weights using the 'checkpoint_path' format
 model.save_weights(checkpoint_path.format(epoch = 0))
 
 model_name = input('Please specify a name for the model: ')
 
 # Train the model
-history = model.fit(xs, ys, epochs=epochs, batch_size = batch_size, callbacks=[cp_callback], verbose=1)
+history = model.fit(xs, ys, epochs=epochs, batch_size = batch_size, callbacks=[cp_callback, loss_callback], verbose=1)
 
 #Save model
 model.save(f'Models/{model_name}')
