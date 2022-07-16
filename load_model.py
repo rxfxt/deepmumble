@@ -51,7 +51,7 @@ max_sequence_len = max([len(x) for x in input_sequences])
 
 model_name = input('Please enter the name of the model you wish to load: ')
 
-model = tf.keras.models.load_model(model_name)
+model = tf.keras.models.load_model(f'Models/{model_name}')
 
 model.summary()
 
