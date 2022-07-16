@@ -3,7 +3,7 @@
 DeepMumble is a package to generation lyrics based on any artists style using machine learning. The package is interactive, allowing the user to extracting the compelte discography of an artist, train a machine learning model, and generate new lyrics. 
 
 ## Background
-****
+
 
  I built this package to explore the different components required to train and build a machine learning model, I was inspired to do so after an assignment in the [DeepLearning Specialization](https://www.coursera.org/specializations/deep-learning). 
 
@@ -15,7 +15,6 @@ The application is split into three distinct parts, which will be covered in the
 
 
 ## Dependencies
-****
 
 ### LyricsGenius
 [LyricsGenius](https://github.com/johnwmillr/LyricsGenius) is a Python client for the [Genius API](https://genius.com/developers). This library is used to extract the lyrics and can be installed using pip by running the following commmand: 
@@ -41,7 +40,6 @@ Used to plot model training plots.
 
 
 ## Usage
-****
 
 ### Fetching Lyrics
 
@@ -150,7 +148,6 @@ The model will then start generating lyrics. Here is a sample:
     I saw the fire in your eyes wipe the idea that you're proud of your indifference get like kanye yeah shit ain't ***** coming back on the phone i'm a rest another phone baby baby yeah yeah if we end up on the ones from the beginnin' oh oh oh yeah oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh yeah oh oh oh oh oh yeah oh inside you know i realized you say you no more ooh ooh said ooh woah oh talkin' bout me babe say woo ooh ooh yeah yeah ohh ooh yeah woo yeah listen yeah oh oh talkin' bout me say ooh or an when ooh ooh ooh inside yeah or like ya or i'd alone here comin' when i'm free too touched my face at your eyes of your eyes is your eyes are an out of your mind in i but i apologize on now who i would my name and your daddy you're feeling light of your mind say your say your name and you'll sleep without them or north or an own your months matter at him louder at me while an weed begged me all of him outside off of an beat every year in they cage through weed blowin' up 'less an face at them paint along and an back with your mattress 'cause an by me along girl holding on represents a neck down a mentor and an artist gon' fight along found an right weed sleep often often often often often often often baby often often often in this thing i'll lose her situation warm let me artist eh last wide she stops yeah love with you believe an artist's ego clouds man been can't you to go go to talk baby you could have to get your love you ain't right for me in words oh hey ey inside your phone baby you like kelly clarkson me hide the hundred baby oh yeah oh yeah oh yeah oh inside you numb the down and mouthing by the show you very and your baby wrong in a mountain in the clouds them in an taking with an artist now your man through your eyes wipe always stay die for me home then pour 2 artist up your night all your body talk artist be artist than you baby talk your man and you got a lot you love me for me
 
 ## Limitations and Future Improvements
-****
 
 - The model does not differentiate between lyrics by the artist and lyrics for featured artists on the song. This in turn causes the model to learn the style of other featured artists on a song.
 - Transformers have been shown to preform significantly better than LSTMs, might be worthwhile explore and update the model to use transformers.
@@ -160,6 +157,5 @@ The model will then start generating lyrics. Here is a sample:
 - Consolidate all the scripts into a main program 
 
 ## Contribution
-****
 
 Feel free to contribute, if you would like to fix a bug, suggest improvements, or add a new feature to the project.
