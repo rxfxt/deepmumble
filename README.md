@@ -1,6 +1,6 @@
 # DeepMumble
 
-DeepMumble is a package to generate lyrics based on any artists style using machine learning. The package is interactive, allowing the user to extracte the compelte discography of an artist, train a machine learning model, and generate new lyrics. 
+DeepMumble is a package to generate lyrics based on any artists style using machine learning. The package is interactive, allowing the user to extract the complete discography of an artist, train a machine learning model, and generate new lyrics. 
 
 ## Background
 
@@ -16,7 +16,7 @@ The application is split into three distinct parts, which will be covered in the
 ## Dependencies
 
 ### LyricsGenius
-[LyricsGenius](https://github.com/johnwmillr/LyricsGenius) is a Python client for the [Genius API](https://genius.com/developers). This library is used to extract the lyrics and can be installed using pip by running the following commmand: 
+[LyricsGenius](https://github.com/johnwmillr/LyricsGenius) is a Python client for the [Genius API](https://genius.com/developers). This library is used to extract the lyrics and can be installed using pip by running the following command: 
 
     $ pip install lyricsgenius
 
@@ -26,7 +26,7 @@ In addition, you will require a Genius API **Client Access Token** to authorize 
 
 ### TensorFlow
 
-The LSTM model is built using [TensorFlow](https://www.tensorflow.org/). Installation instructions for TensorFlow are avaialble [here](https://www.tensorflow.org/install/pip).
+The LSTM model is built using [TensorFlow](https://www.tensorflow.org/). Installation instructions for TensorFlow are available [here](https://www.tensorflow.org/install/pip).
 
 In addition, NumPy and Matplotlib are also required and would need to be installed.
 
@@ -40,8 +40,8 @@ In order to get the lyrics for a specific artist, you can run the following scri
 
 You will then be prompted to enter the artists name, if you'd like to pull all the lyrics and specifying the file name to write the lyrics to. For this example, we will write all the lyrics for The Weeknd:
 
-    Enter artist name to retreive song lyrics: The Weeknd
-    Do you want to pull all the aritsts lyrics (y/n): y
+    Enter artist name to retrieve song lyrics: The Weeknd
+    Do you want to pull all the artists lyrics (y/n): y
     Specify file name to write lyrics: TheWeekndLyrics
 
 The script will then call the Genius API and start fetching the lyrics:
@@ -66,7 +66,7 @@ The lyrics do require some clean up to remove song titles, as they will hurt mod
 Script will prompt you to specify the lyrics file name to be cleaned and will then write the cleaned lyrics file in the following format `<filename>_cleaned.txt`:
 
     Specify file name: TheWeekndLyrics
-    Lyrics were cleaned and writen to TheWeekndLyrics_cleaned.txt
+    Lyrics were cleaned and written to TheWeekndLyrics_cleaned.txt
 
 ### Train Model 
 
@@ -127,7 +127,7 @@ Then enter the name of the model to load:
 
     Enter the name of the model to load: DeepAbel
 
-Once the model is loaded, set a seed phrase to start generating lyrcs: 
+Once the model is loaded, set a seed phrase to start generating lyrics: 
 
 ```
 Enter a seed phrase to start lyrics generation from: I saw the fire in your eyes

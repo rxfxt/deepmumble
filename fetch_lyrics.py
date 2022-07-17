@@ -16,8 +16,8 @@ api_key = config.api_key
 genius = Genius(api_key, skip_non_songs=True, excluded_terms=["(Remix)"], remove_section_headers=True)
 
 # Prompt user on which artist, number of songs they want to grab lyrics
-artist_input = input("Enter artist name to retreive song lyrics: ")
-all_music = input("Do you want to pull all the aritsts lyrics (y/n): ")
+artist_input = input("Enter artist name to retrieve song lyrics: ")
+all_music = input("Do you want to pull all the artists lyrics (y/n): ")
 file_name = input("Specify file name to write lyrics: ")
 
 # Initialize lyrics file

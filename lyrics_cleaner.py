@@ -23,4 +23,4 @@ for line in file:
         
     # Write line to cleaned lyrics file
     file_cleaned.write(line)
-print(f"Lyrics were cleaned and writen to {file_name}_cleaned.txt")
+print(f"Lyrics were cleaned and written to {file_name}_cleaned.txt")
