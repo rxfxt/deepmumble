@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 
-lyrics_file = input('Please enter the name of the lyrics file: ')
+lyrics_file = input('Enter the name of the lyrics file: ')
 
 # Load the dataset
 data = open(f'./Lyrics/{lyrics_file}.txt', encoding="utf8").read()
@@ -49,14 +49,14 @@ for line in corpus:
 # Get the length of the longest line
 max_sequence_len = max([len(x) for x in input_sequences])
 
-model_name = input('Please enter the name of the model you wish to load: ')
+model_name = input('Enter the name of the model to load: ')
 
 model = tf.keras.models.load_model(f'Models/{model_name}')
 
 model.summary()
 
 # Define seed text
-seed_text = input('Please enter a seed phrase to start lyrics generation from: ')
+seed_text = input('Enter a seed phrase to start lyrics generation from: ')
 
 # Define total words to predict
 next_words = 500

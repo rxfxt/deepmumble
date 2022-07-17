@@ -9,7 +9,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 
-lyrics_file = input('Please enter the lyrics filename: ')
+lyrics_file = input('Enter the lyrics file name: ')
 
 # Load the lyrics file
 data = open(f'./Lyrics/{lyrics_file}.txt', encoding="utf8").read()
@@ -143,7 +143,7 @@ loss_callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=5)
 # Save the weights using the 'checkpoint_path' format
 model.save_weights(checkpoint_path.format(epoch = 0))
 
-model_name = input('Please specify a name for the model: ')
+model_name = input('Specify a name for the model: ')
 
 # Train the model
 history = model.fit(xs, ys, epochs=epochs, batch_size = batch_size, callbacks=[cp_callback, loss_callback], verbose=1)

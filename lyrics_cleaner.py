@@ -2,7 +2,7 @@
 import re
 
 # Load lyrics file
-file_name = input("Specify filename: ")
+file_name = input("Specify file name: ")
 
 try:
     file = open(f"./Lyrics/{file_name}.txt", "r", encoding="utf-8")
@@ -23,4 +23,4 @@ for line in file:
         
     # Write line to cleaned lyrics file
     file_cleaned.write(line)
-print(f"Lyrics where cleaned and writen to {file_name}_cleaned.txt")
+print(f"Lyrics were cleaned and writen to {file_name}_cleaned.txt")
