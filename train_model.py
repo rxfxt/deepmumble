@@ -76,28 +76,6 @@ for word in sentence:
 # Print the token list
 print(token_list)
 
-# Pick element
-elem_number = 5
-
-# Print token list and phrase
-print(f'token list: {xs[elem_number]}')
-print(f'decoded to text: {tokenizer.sequences_to_texts([xs[elem_number]])}')
-
-# Print label
-print(f'one-hot label: {ys[elem_number]}')
-print(f'index of label: {np.argmax(ys[elem_number])}')
-
-# Pick element
-elem_number = 4
-
-# Print token list and phrase
-print(f'token list: {xs[elem_number]}')
-print(f'decoded to text: {tokenizer.sequences_to_texts([xs[elem_number]])}')
-
-# Print label
-print(f'one-hot label: {ys[elem_number]}')
-print(f'index of label: {np.argmax(ys[elem_number])}')
-
 # Number of training examples 
 print(f'Number of training examples: {len(xs)}')
 
